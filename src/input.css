@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ==========================================================
-   NEF COLLEGE — component layer
+   SAK COLLEGE — component layer
    Reusable classes for patterns that repeat across many pages
    (buttons, cards, the signature "weave" strip, sidebar nav…)
    so page markup stays readable instead of drowning in utilities.
@@ -21,6 +21,9 @@
   }
   a {
     @apply text-primary;
+  }
+  footer a {
+    @apply text-white;
   }
 }
 

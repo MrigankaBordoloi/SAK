@@ -1,4 +1,4 @@
-# NEF College — Website
+# SAK College — Website
 
 Static HTML site styled entirely with Tailwind CSS. No framework, no client-side
 routing — plain pages that share a header/nav/footer via a tiny JS include script.
