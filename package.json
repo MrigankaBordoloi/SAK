@@ -4,7 +4,7 @@
   "private": true,
   "description": "SAK College (P.G.) website — static HTML + Tailwind CSS",
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./assets/css/output.css --minify",
+    "build": "mkdir -p assets/css && tailwindcss -i ./src/input.css -o ./assets/css/output.css --minify",
     "watch": "tailwindcss -i ./src/input.css -o ./assets/css/output.css --watch",
     "serve": "serve . -l 3000",
     "dev": "concurrently -n tailwind,server -c blue,green \"npm:watch\" \"npm:serve\""
