@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================
+   NEF COLLEGE — component layer
+   Reusable classes for patterns that repeat across many pages
+   (buttons, cards, the signature "weave" strip, sidebar nav…)
+   so page markup stays readable instead of drowning in utilities.
+   ========================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-body leading-relaxed;
+  }
+  h1, h2, h3, .display {
+    @apply font-display font-semibold leading-tight text-primary-deep;
+  }
+  a {
+    @apply text-primary;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply max-w-wrap mx-auto px-6;
+  }
+
+  /* Signature woven diamond strip (gamosa/jacquard border motif) */
+  .weave {
+    height: 14px;
+    background-image:
+      repeating-linear-gradient(45deg, #A6392F 0 6px, transparent 6px 12px),
+      repeating-linear-gradient(-45deg, #C8912F 0 6px, transparent 6px 12px);
+    @apply bg-primary-deep opacity-95;
+  }
+  .weave--thin {
+    height: 8px;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-block rounded-lg px-6 py-3 font-semibold text-[15px] transition-colors;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-deep;
+  }
+  .btn-ghost {
+    @apply btn border-[1.5px] border-primary text-primary hover:bg-primary hover:text-white;
+  }
+
+  /* Pill chips (hero credentials) */
+  .chip {
+    @apply text-xs font-semibold text-primary bg-accent-soft border border-[#E7D6AE] px-3 py-1.5 rounded-full;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs tracking-[.14em] uppercase font-semibold text-notice;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply w-[26px] h-0.5 bg-notice;
+  }
+
+  /* Generic content card */
+  .card {
+    @apply bg-card border border-line rounded shadow-card;
+  }
+
+  /* Notice callouts inside body copy */
+  .notecard {
+    @apply bg-accent-soft border-l-4 border-accent px-5 py-4 rounded-r-lg my-5 text-[14.5px];
+  }
+
+  /* Inner-page banner */
+  .pagebanner {
+    @apply bg-primary text-white py-10 md:py-12;
+  }
+  .pagebanner .crumbs {
+    @apply text-sm text-[#B9C6D8] mb-2.5;
+  }
+  .pagebanner .crumbs a {
+    @apply text-accent;
+  }
+  .pagebanner h2 {
+    @apply text-white text-[28px] md:text-[40px];
+  }
+
+  /* Sidebar layout for inner pages */
+  .pagegrid {
+    @apply wrap grid grid-cols-1 md:grid-cols-[270px_1fr] gap-11 py-12 md:py-14;
+  }
+  .sidenav {
+    @apply card overflow-hidden self-start md:sticky md:top-[70px];
+  }
+  .sidenav h3 {
+    @apply bg-accent-soft px-[18px] py-3.5 text-[15px];
+  }
+  .sidenav a {
+    @apply block px-[18px] py-2.5 text-sm border-b border-line text-ink hover:bg-paper hover:text-notice hover:font-semibold;
+  }
+  .sidenav a.on {
+    @apply bg-paper text-notice font-semibold;
+  }
+  .content h3 {
+    @apply text-[22px] mt-6 mb-2.5 first:mt-0;
+  }
+  .content p {
+    @apply mb-3.5 text-[#3A3F46];
+  }
+  .content ul {
+    @apply my-0 mb-4 ml-5 text-[#3A3F46] list-disc;
+  }
+  .content li {
+    @apply mb-1.5;
+  }
+
+  /* Data tables */
+  .table {
+    @apply w-full border-collapse my-4 text-[14.5px] bg-card;
+  }
+  .table th {
+    @apply bg-primary text-white text-left px-3.5 py-2.5 font-semibold;
+  }
+  .table td {
+    @apply px-3.5 py-2.5 border-b border-line;
+  }
+  .table tr:nth-child(even) td {
+    @apply bg-paper;
+  }
+
+  /* Numbered step flow (admission procedure) */
+  .steps {
+    @apply list-none my-5 [counter-reset:step];
+  }
+  .steps li {
+    counter-increment: step;
+    @apply relative pb-6 pl-[58px];
+  }
+  .steps li::before {
+    content: counter(step, decimal-leading-zero);
+    @apply absolute left-0 top-0 w-10 h-10 rounded-full bg-card border-2 border-accent text-primary font-display font-bold grid place-items-center text-[15px];
+  }
+  .steps li::after {
+    content: "";
+    @apply absolute left-[19px] top-11 bottom-1 w-0.5 bg-line;
+  }
+  .steps li:last-child::after {
+    content: none;
+  }
+  .steps h4 {
+    @apply text-[16.5px] mb-1;
+  }
+  .steps p {
+    @apply text-sm text-ink-soft;
+  }
+
+  /* Faculty / people cards */
+  .pcard {
+    @apply card p-[22px] text-center;
+  }
+  .pcard .avatar {
+    @apply w-[76px] h-[76px] rounded-full bg-primary text-white grid place-items-center mx-auto mb-3 font-display text-2xl border-[3px] border-accent-soft;
+  }
+  .pcard h4 {
+    @apply text-base;
+  }
+  .pcard span {
+    @apply block text-[13px] text-notice font-semibold my-1;
+  }
+  .pcard p {
+    @apply text-[12.5px] text-ink-soft;
+  }
+
+  /* Placeholder tiles for photos/maps not yet supplied */
+  .ph-tile {
+    @apply grid place-items-center text-white text-xs tracking-wide rounded-lg bg-gradient-to-br from-[#1C3C63] to-primary-deep;
+  }
+}
